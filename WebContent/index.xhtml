@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<f:loadBundle basename="resources.application" var="msg"/>
+
+<h3><h:outputText value="#{msg.welcomeHeading}" /></h3>
+<p><h:outputText value="#{msg.welcomeMessage}" /></p>
+   <h:head>
+      <title><h:outputText value="#{msg.welcomeTitle}" /></title>
+   </h:head>
+   <h:body>
+      <h:form>
+      <h:inputText id="desiredTime1" value="#{process1Bean.desiredTime}"></h:inputText>
+       <h:commandButton value="Schedule Process1">
+         <f:ajax listener="#{process1Bean.scheduleProcess1}" execute="@form" render="outputMessage1" />
+      </h:commandButton>
+         
+      <h:inputText id="desiredTime2" value="#{process2Bean.desiredTime}"></h:inputText>
+       <h:commandButton value="Schedule Process2">
+         <f:ajax listener="#{process2Bean.scheduleProcess2}" execute="@form" render="outputMessage1" />
+      </h:commandButton>
+         
+      <h:inputText id="desiredTime3" value="#{process3Bean.desiredTime}"></h:inputText>
+       <h:commandButton value="Schedule Process3">
+         <f:ajax listener="#{process3Bean.scheduleProcess3}" execute="@form" render="outputMessage1" />
+      </h:commandButton>
+
+      <h2><h:outputText id="outputMessage1"
+         value="#{process1Bean.name} #{process2Bean.name} #{process3Bean.name}"
+         /></h2>
+      </h:form>
+   </h:body>
+
+</html>
